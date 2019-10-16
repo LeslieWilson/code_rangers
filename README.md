@@ -21,3 +21,5 @@ Technologies outline:
 4.    Devise for user authentication
 5.    Rspec, Capybara, and Enzyme with Jest for testing
 6.    [National Parks Service API for data]
+
+[![Codeship Status for LeslieWilson/code_rangers](https://app.codeship.com/projects/57fd9ee0-d194-0137-fd9c-0a8aab36665a/status?branch=master)](https://app.codeship.com/projects/369589)
