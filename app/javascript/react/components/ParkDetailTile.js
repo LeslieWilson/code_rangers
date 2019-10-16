@@ -3,9 +3,10 @@ import React from 'react'
 export const ParkDetailTile = (props) => {
   return (
     <div>
-      <p>Location: {props.location}</p>
+      <h1>{props.name}</h1>
+      <h4>Location: {props.location}</h4>
       <p>{props.description}</p>
-      <p>{props.image}</p>
+      <div>{props.image}</div>
     </div>
   )
 }

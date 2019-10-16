@@ -3,36 +3,25 @@ import Enzyme, { mount } from "enzyme"
 import { act } from "react-dom/test-utils"
 import Adapter from "enzyme-adapter-react-16"
 
-import ParkShowContainer from "./ParkShowContainer"
+import ParkDetailTile from "./ParkDetailTile"
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe("ParkShowContainer", () => {
+describe("ParkDetailTile", () => {
   let wrapper
-
-  let data = [
-    {
-      id: 3,
-      name: "Denali",
-      location: "Alaska",
-      description: "It is an oh so beautiful National Park. Just gorgeous!"
-    }
-  ]
 
   beforeEach(() => {
     wrapper = mount(
-      <ParkShowContainer
-        data={data}
+      <ParkDetailTile
+        id="3"
+        location="Alaska"
+        description="It is an oh so beautiful National Park. Just gorgeous!"
       />
     )
   })
 
-  it("should render the name of the park on the page", () => {
-    expect(wrapper.find('p').text()).toBe("Denali")
-  })
-
   it("should render the location of the park on the page", () => {
-    expect(wrapper.find('p').text()).toBe("Alaska")
+    expect(wrapper.find('h4').text()).toBe("Location: Alaska")
   })
 
   it("should render the description of the park on the page", () => {

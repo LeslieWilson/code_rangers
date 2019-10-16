@@ -7,27 +7,27 @@ Enzyme.configure({ adapter: new Adapter() })
 import ParkTile from "./ParkTile"
 
 describe ("ParkTile", () => {
-    let wrapper
+  let wrapper
 
-    beforeEach(() =>{
-        wrapper = mount(
-            <BrowserRouter>
-                <ParkTile
-                    name="leslie"
-                    id="1"
-                />
-            </BrowserRouter>
-        )
-    })
+  beforeEach(() =>{
+    wrapper = mount(
+      <BrowserRouter>
+        <ParkTile
+          name="leslie"
+          id="1"
+        />
+      </BrowserRouter>
+    )
+  })
 
-    it("visitor goes to index page sees a list of parks", () =>{
-        expect(wrapper.find("li").text()).toBe("leslie")
-    })
+  it("visitor goes to index page sees a list of parks", () =>{
+    expect(wrapper.find("li").text()).toBe("leslie")
+  })
 
-    it("should render a link to /parks", () =>{
-        const link = wrapper.find("Link").first()
+  it("should render a link to /parks", () =>{
+    const link = wrapper.find("Link").first()
 
-        expect(link).toBeDefined()
-        expect(link.props()["to"]).toBe("/parks/1")
-    })
+    expect(link).toBeDefined()
+    expect(link.props()["to"]).toBe("/parks/1")
+  })
 })
