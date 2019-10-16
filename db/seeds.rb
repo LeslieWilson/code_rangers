@@ -8,7 +8,8 @@
 
 
 Park.create(
-    name:"yellowstone",
-    location:"montana",
-    description:"old faithful",
-    image: "hello picture")
+  name: "yellowstone",
+  location: "montana",
+  description: "old faithful",
+  image: "hello picture"
+)

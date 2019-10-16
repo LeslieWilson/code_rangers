@@ -1,4 +1,4 @@
 class Park < ApplicationRecord
-    def index
-    end
+  def index
+  end
 end
