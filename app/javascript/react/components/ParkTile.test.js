@@ -13,8 +13,8 @@ describe ("ParkTile", () => {
         wrapper = mount(
             <BrowserRouter>
                 <ParkTile
-                    name = "leslie"
-                    id = "1"
+                    name="leslie"
+                    id="1"
                 />
             </BrowserRouter>
         )
