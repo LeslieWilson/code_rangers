@@ -5,7 +5,7 @@ const ParkTile = (props) =>{
     return(
         <div className="park-tile">
             <Link to={`/parks/${props.id}`}>
-                <p>{props.name}</p>
+                <li>{props.name}</li>
             </Link>
         </div>
     )
