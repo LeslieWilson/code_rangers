@@ -22,23 +22,20 @@ const IndexPage = (props) => {
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }, [])
 
-
     const parkTiles = parks.map(park => {
         return(
             <ParkTile
             key={park.id}
             name={park.name}
             />
-
         )
     })
 
     return(
         <div>
-        <h3> Park Index Container</h3>
-        {parkTiles}
+            <h3> Park Index Container</h3>
+            {parkTiles}
         </div>
-
     )
 }
 

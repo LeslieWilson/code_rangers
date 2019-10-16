@@ -7,4 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Park.create(name:"yellowstone", location:"montana", description:"old faithful alskdjfhlskajdhflksajdfhlsakjdfhlskajdfhlaskjdhflsakjdfhlaskjdfhlsakjdfhlaskjdfhlaskjdfhlaskjdfhlaskjdfhlsakdjfhaslkdjfhsalkfjdhlafkjsdhflakjfhlaksjdhflaksjdfhlaksdjhlfaksjdhflaksjdhflaskjdhflaskjdhflaskjdfhlaksjdhflakjsdfh", image: "hello picture")
+Park.create(
+    name:"yellowstone",
+    location:"montana",
+    description:"old faithful alskdjfhlskajdhflksajdfhlsakjdfhlskajdfhlaskjdhflsakjdfhlaskjdfhlsakjdfhlaskjdfhlaskjdfhlaskjdfhlaskjdfhlsakdjfhaslkdjfhsalkfjdhlafkjsdhflakjfhlaksjdhflaksjdfhlaksdjhlfaksjdhflaksjdhflaskjdhflaskjdhflaskjdfhlaksjdhflakjsdfh",
+    image: "hello picture")
