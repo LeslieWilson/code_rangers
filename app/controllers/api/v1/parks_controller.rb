@@ -1,4 +1,5 @@
 class Api::V1::ParksController < ApiController
+
   before_action :authorize_user, except: [:index, :show]
 
   def index
@@ -6,6 +7,11 @@ class Api::V1::ParksController < ApiController
   end
 
   def show
-    render json: Park.find(params[:id])
+    park = Park.find(params[:id])
+
+    render json: {
+      park: park,
+      reviews: park.reviews
+    }
   end
 end

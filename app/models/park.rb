@@ -1,4 +1,3 @@
 class Park < ApplicationRecord
-  def index
-  end
+  has_many :reviews
 end
