@@ -5,7 +5,7 @@
 
 Project: National Parks Review Site
 Group Name: Code Rangers
-Authors: Dan Alberts, Nick Jamison, Amy Lieberman, Leslie Wilson
+Authors: Nick Jamison, Dan Alberts, Amy Lieberman, Leslie Wilson
 
 View Our Application on Heroku: http://npreviews.herokuapp.com/
 
