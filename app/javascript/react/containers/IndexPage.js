@@ -34,7 +34,8 @@ const IndexPage = (props) => {
 
   return(
     <div>
-      <h3> Park Index Container</h3>
+      <h3>National Parks</h3>
+      <h5>Select a National Park to view reviews and details about the park.</h5>
       {parkTiles}
     </div>
   )

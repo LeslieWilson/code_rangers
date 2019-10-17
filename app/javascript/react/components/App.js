@@ -1,9 +1,8 @@
 import React from 'react'
-
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import IndexPage from "../containers/IndexPage"
 import ParkShowContainer from "../containers/ParkShowContainer"
 
-import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 const App = (props) => {
   return(

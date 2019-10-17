@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import ParkDetailTile from '../components/ParkDetailTile'
 
 export const ParkShowContainer = (props) => {
