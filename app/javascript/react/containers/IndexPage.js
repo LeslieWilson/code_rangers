@@ -1,5 +1,8 @@
+
 import React, { useState, useEffect } from "react"
 import ParkTile from "../components/ParkTile"
+import ParkForm from "./ParkForm"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 const IndexPage = (props) => {
     const[parks, setParks] = useState([])
@@ -22,6 +25,8 @@ const IndexPage = (props) => {
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }, [])
 
+
+
     const parkTiles = parks.map(park => {
         return(
             <ParkTile
@@ -35,6 +40,7 @@ const IndexPage = (props) => {
         <div>
             <h3> Park Index Container</h3>
             {parkTiles}
+
         </div>
     )
 }

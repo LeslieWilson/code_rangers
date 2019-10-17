@@ -34,4 +34,25 @@ RSpec.describe Api::V1::ParksController, type: :controller do
             expect(returned_json[1]["image"]).to eq "hello pic2"
         end
     end
+
+
+    describe "POST#create" do
+      it "should should sucessfully post" do
+
+      sample_park = { park: {
+            name: "denali",
+            location: "alaska",
+            description: "really snowey",
+            image: "hello pic2"
+              } }
+
+        post :create, :params => sample_park, format: :json
+        returned_json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        expect(response.content_type).to eq("application/json")
+        expect(returned_json).to_not be_kind_of(Array)
+        expect(returned_json["name"]).to eq sample_park[:park][:name]
+
+      end
+    end
 end
