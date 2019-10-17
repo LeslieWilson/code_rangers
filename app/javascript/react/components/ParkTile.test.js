@@ -2,9 +2,9 @@ import React from "react"
 import Enzyme, { mount } from 'enzyme'
 import { BrowserRouter } from 'react-router-dom'
 import Adapter from "enzyme-adapter-react-16"
+import ParkTile from "./ParkTile"
 Enzyme.configure({ adapter: new Adapter() })
 
-import ParkTile from "./ParkTile"
 
 describe ("ParkTile", () => {
   let wrapper
@@ -20,11 +20,11 @@ describe ("ParkTile", () => {
     )
   })
 
-  it("visitor goes to index page sees a list of parks", () =>{
+  it("visitor goes to index page sees a list of parks", () => {
     expect(wrapper.find("li").text()).toBe("leslie")
   })
 
-  it("should render a link to /parks", () =>{
+  it("should render a link to /parks", () => {
     const link = wrapper.find("Link").first()
 
     expect(link).toBeDefined()

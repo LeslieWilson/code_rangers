@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ParkDetailTile = (props) => {
+const ParkDetailTile = (props) => {
   return (
     <div>
       <h1>{props.name}</h1>
