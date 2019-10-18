@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import humps from 'humps'
 import ParkDetailTile from '../components/ParkDetailTile'
 import ReviewsList from '../components/ReviewsList'
 
@@ -20,7 +21,7 @@ const ParkShowContainer = (props) => {
     })
     .then(response => response.json())
     .then(body => {
-      let thisPark = body
+      let thisPark = humps.camelizeKeys(body)
       setPark(thisPark.park)
       setReviews(thisPark.reviews)
     })

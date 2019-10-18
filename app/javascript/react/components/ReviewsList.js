@@ -7,7 +7,7 @@ const ReviewsList = (props) => {
       <ReviewTile
         key={review.id}
         rating={review.rating}
-        review_body={review.review_body}
+        reviewBody={review.reviewBody}
       />
     )
   })
