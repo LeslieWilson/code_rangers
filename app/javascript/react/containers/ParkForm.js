@@ -48,9 +48,9 @@ const ParkForm = (props) => {
 
   const handleParkSubmit = (event) =>{
     event.preventDefault()
-    // if (!validForSubmission()){
-    //   return(<p>nope</p>)
-    // }
+    if (!validForSubmission()){
+      return
+    }
 
     let payload = {
       name:newPark.name,

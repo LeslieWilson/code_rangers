@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_135234) do
     t.string "location", null: false
     t.text "description", null: false
     t.string "image", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|

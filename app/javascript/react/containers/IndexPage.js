@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import ParkTile from "../components/ParkTile"
 import ParkForm from "./ParkForm"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 const IndexPage = (props) => {
   const[parks, setParks] = useState([])
@@ -20,7 +20,7 @@ const IndexPage = (props) => {
     })
     .then(response => response.json())
     .then(parkBody => {
-      setParks(parkBody.parks)
+      setParks(parkBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
