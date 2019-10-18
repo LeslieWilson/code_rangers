@@ -20,7 +20,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
   let!(:first_review) {Review.create(
     rating: "3",
     review_body: "It was the bestest!",
-    park_id: "1"
+    park_id: "9"
   )}
 
 
