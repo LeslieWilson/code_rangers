@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ParkDetailTile from '../components/ParkDetailTile'
 import ReviewsList from '../components/ReviewsList'
+import ReviewForm from './ReviewForm'
 
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
@@ -37,6 +38,8 @@ const ParkShowContainer = (props) => {
       />
       <ReviewsList
         reviews={reviews}
+      />
+      <ReviewForm
       />
     </div>
   )
