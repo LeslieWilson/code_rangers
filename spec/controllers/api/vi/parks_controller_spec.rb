@@ -6,7 +6,6 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     location: "montana",
     description: "old faithful",
     image: "hello picture",
-    id: "1"
   )}
 
   let!(:second_park) {Park.create(
@@ -14,13 +13,12 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     location: "alaska",
     description: "really snowy",
     image: "hello pic2",
-    id: "2"
   )}
 
   let!(:first_review) {Review.create(
     rating: "3",
     review_body: "It was the bestest!",
-    park_id: "9"
+    park: first_park
   )}
 
 
