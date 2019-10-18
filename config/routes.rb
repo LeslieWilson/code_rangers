@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api do
-      namespace :v1 do
-          resources :parks, only: [:index, :show, :new, :create]
-      end
-   end
+    namespace :v1 do
+      resources :parks, only: [:index, :show, :new, :create]
+    end
+  end
 end

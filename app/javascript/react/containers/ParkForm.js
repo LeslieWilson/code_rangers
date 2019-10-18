@@ -97,7 +97,8 @@ const ParkForm = (props) => {
   }
 
   if (shouldRedirect){
-    return <Redirect to="/parks" />}
+    return <Redirect to="/parks" />
+  }
 
   return(
     <form onSubmit={handleParkSubmit} className="new-parkform callout">
