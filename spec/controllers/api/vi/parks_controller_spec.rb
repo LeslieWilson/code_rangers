@@ -62,7 +62,8 @@ RSpec.describe Api::V1::ParksController, type: :controller do
         name: "denali",
         location: "alaska",
         description: "really snowy",
-        image: "hello pic2"
+        image: "hello pic2",
+        id: "5"
       }}
 
       post :create, :params => sample_park, format: :json
@@ -82,7 +83,8 @@ RSpec.describe Api::V1::ParksController, type: :controller do
         name: "",
         location: "",
         description: "",
-        image: "hello pic2"
+        image: "hello pic2",
+        id: "6"
       }}
 
       post :create, :params => sample_park, format: :json
