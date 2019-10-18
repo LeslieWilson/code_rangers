@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ParkTile from "../components/ParkTile"
+import ParkForm from "./ParkForm"
 
 const IndexPage = (props) => {
   const[parks, setParks] = useState([])
@@ -17,7 +18,7 @@ const IndexPage = (props) => {
     })
     .then(response => response.json())
     .then(parkBody => {
-      setParks(parkBody.parks)
+      setParks(parkBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
