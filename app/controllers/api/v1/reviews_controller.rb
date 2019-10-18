@@ -2,7 +2,7 @@ class Api::V1::ReviewsController < ApiController
 
   def create
     review = Review.new(review_params)
-    binding.pry
+    
     if review.save
       render json: {}
     else
