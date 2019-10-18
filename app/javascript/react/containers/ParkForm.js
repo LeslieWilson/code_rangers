@@ -3,32 +3,30 @@ import { Redirect } from "react-router-dom"
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
 
-const ParkForm = (props) =>{
-  const [errors, setErrors] = useState({})
+const ParkForm = (props) => {
+  const[errors, setErrors] = useState({})
   const[shouldRedirect, setShouldRedirect] = useState(false)
   const[newPark, setNewPark] = useState({
-    name:"",
-    location:"",
-    description:"",
-    image:""
+    name: "",
+    location: "",
+    description: "",
+    image: ""
   })
 
-
-  const handleFieldChange = event =>{
+  const handleFieldChange = event => {
     setNewPark({
       ...newPark,
       [event.currentTarget.name]: event.currentTarget.value
     })
-    // add error handling in handle change function here
   }
 
-  const clearFields = (event) =>{
+  const clearFields = (event) => {
     event.preventDefault()
     setNewPark({
-      name:"",
-      location:"",
-      description:"",
-      image:""
+      name: "",
+      location: "",
+      description: "",
+      image: ""
     })
     setErrors({})
   }
@@ -44,73 +42,68 @@ const ParkForm = (props) =>{
         }
       }
     })
-
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
 
-
   const handleParkSubmit = (event) =>{
     event.preventDefault()
-    if (!validForSubmission()){
-      return(<p>nope</p>)
+    // if (!validForSubmission()){
+    //   return(<p>nope</p>)
+    // }
+
+    let payload = {
+      name:newPark.name,
+      location:newPark.location,
+      description:newPark.description,
+      image:newPark.image
     }
 
-      let payload = {
-        name:newPark.name,
-        location:newPark.location,
-        description:newPark.description,
-        image:newPark.image
+    addNewPark(payload)
+    setNewPark({
+      name: "",
+      location: "",
+      description: "",
+      image: ""
+    })
+  }
+
+  const addNewPark = payload => {
+    fetch("/api/v1/parks", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
       }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error);
+      }
+    })
+    .then((response)=>{
+      return response.json()
+    })
+    .then((persistedData)=>{
+      setShouldRedirect(true)
+    })
+    .catch((error) => {console.error("error in fetch")
+    })
+  }
 
-      addNewPark(payload)
-      setNewPark({
-        name:"",
-        location:"",
-        description:"",
-        image:""
-      })
+  if (shouldRedirect){
+    return <Redirect to="/parks" />}
 
-    }
-
-    const addNewPark = payload => {
-        fetch("/api/v1/parks", {
-            method: "POST",
-            body: JSON.stringify(payload),
-            headers:{
-              Accept: "application/json",
-              "Content-type": "application/json"
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                const errorMessage = `${response.status} (${response.statusText})`
-                const error = new Error(errorMessage)
-                throw(error);
-            }
-        })
-        .then((response)=>{
-            return response.json()
-        })
-
-        .then((persistedData)=>{
-            setShouldRedirect(true)
-        })
-        .catch((error)=>{ console.error("error in fetch")
-        })
-
-    }
-
-    if (shouldRedirect){
-      return <Redirect to="/parks" /> }
-
-  return (
+  return(
     <form onSubmit={handleParkSubmit} className="new-parkform callout">
-    <ErrorList errors={errors} />
+      <ErrorList errors={errors} />
       <label>
-      Park Name
+        Park Name
         <input
           name="name"
           type="text"
@@ -120,7 +113,7 @@ const ParkForm = (props) =>{
       </label>
 
       <label>
-      Park location
+        Park location
         <input
           name="location"
           type="text"
@@ -130,7 +123,7 @@ const ParkForm = (props) =>{
       </label>
 
       <label>
-      Park Description
+        Park Description
         <input
           name="description"
           type="text"
@@ -141,16 +134,15 @@ const ParkForm = (props) =>{
 
       <label>
         Park Image
-          <input
-            name="image"
-            type="text"
-            onChange={handleFieldChange}
-            value={newPark.image}
-          />
+        <input
+          name="image"
+          type="text"
+          onChange={handleFieldChange}
+          value={newPark.image}
+        />
       </label>
 
-
-    <input className="button" type="submit" value="Submit"/>
+      <input className="button" type="submit" value="Submit"/>
     </form>
   )
 }
