@@ -3,6 +3,6 @@ class Park < ApplicationRecord
   validates :location, presence:true
   validates :description, presence:true
   validates :image, presence:true
-    def index
-    end
+  
+  has_many :reviews
 end

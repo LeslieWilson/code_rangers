@@ -3,6 +3,15 @@ class Api::V1::ParksController < ApiController
     render json: Park.all
   end
 
+  def show
+    park = Park.find(params[:id])
+
+    render json: {
+      park: park,
+      reviews: park.reviews
+    }
+  end
+
   def new
   end
 

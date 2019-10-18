@@ -8,7 +8,28 @@
 
 
 Park.create(
-    name:"yellowstone",
-    location:"montana",
-    description:"old faithful",
-    image: "hello picture")
+  name: "Yellowstone",
+  location: "Montana",
+  description: "Old Faithful",
+  image: "hello picture"
+)
+
+Park.create(
+  name: "Acadia",
+  location: "Maine",
+  description: "There are a lot of wonderful short hikes with breathtaking views!",
+  image: "a picture"
+)
+
+Park.create(
+  name: "Olympic National Park",
+  location: "Washington",
+  description: "This park is beautiful and has many microclimates including a rainforests, tide pools, and snow capped mountains.",
+  image: "it's a picture"
+)
+
+Review.create!(
+  rating: 5,
+  review_body: "Loved it!!",
+  park_id: 1
+)

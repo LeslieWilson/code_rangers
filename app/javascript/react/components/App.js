@@ -7,7 +7,9 @@ const App = (props) => {
   return(
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component = {IndexPage}/>
         <Route exact path="/parks" component = {IndexPage}/>
+        <Route exact path="/parks/:id" component = {ParkShowContainer}/>
         <Route exact path="/parks/new" component = {ParkForm}/>
       </Switch>
     </BrowserRouter>
