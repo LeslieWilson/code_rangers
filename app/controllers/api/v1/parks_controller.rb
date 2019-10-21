@@ -1,5 +1,5 @@
 class Api::V1::ParksController < ApiController
-  
+
   def index
     render json: Park.all
   end
