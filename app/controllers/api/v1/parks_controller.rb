@@ -1,9 +1,5 @@
 class Api::V1::ParksController < ApiController
-<<<<<<< HEAD
   before_action :authenticate_user!, except: [:show, :index]
-=======
-
->>>>>>> adc02b52d48c2166166124b3aa9a8ba1c78a1458
   def index
     render json: Park.all
   end
