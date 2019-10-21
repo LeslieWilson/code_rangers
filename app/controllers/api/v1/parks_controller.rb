@@ -1,7 +1,5 @@
 class Api::V1::ParksController < ApiController
-
-  before_action :authorize_user, except: [:index, :show]
-
+  
   def index
     render json: Park.all
   end
@@ -13,5 +11,24 @@ class Api::V1::ParksController < ApiController
       park: park,
       reviews: park.reviews
     }
+  end
+
+  def new
+  end
+
+  def create
+    park = Park.new(park_params)
+
+    if park.save
+      render json: {}
+    else
+      render json: {status: "error"}
+    end
+  end
+
+  private
+
+  def park_params
+    params.require(:park).permit(:name, :location, :description, :image)
   end
 end

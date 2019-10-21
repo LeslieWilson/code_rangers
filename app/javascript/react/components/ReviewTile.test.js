@@ -13,8 +13,8 @@ describe("ReviewTile", () => {
     wrapper = mount(
       <ReviewTile
         rating="3"
-        review_body="It was pretty nice. I've seen better, I've seen worse."
-        park_id="2"
+        reviewBody="It was pretty nice. I've seen better, I've seen worse."
+        parkId="2"
       />
     )
   })
