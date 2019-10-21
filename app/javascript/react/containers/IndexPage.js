@@ -18,7 +18,7 @@ const IndexPage = (props) => {
     })
     .then(response => response.json())
     .then(parkBody => {
-      setParks(parkBody)
+      setParks(parkBody.parks)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
