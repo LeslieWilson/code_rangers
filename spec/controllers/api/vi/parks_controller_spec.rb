@@ -90,7 +90,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["name"]).to eq park4["can't be blank"]
       expect(returned_json["location"]).to eq park4["can't be blank"]
       expect(returned_json["description"]).to eq park4["can't be blank"]
-      expect()
+      expect(returned_json["user"]).to eq("You must be signed in to add a new park!")
     end
   end
 end
