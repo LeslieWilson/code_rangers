@@ -7,6 +7,7 @@ import humps from 'humps'
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   let parkId = props.match.params.id
 
   useEffect(() => {
@@ -47,13 +48,11 @@ const ParkShowContainer = (props) => {
         throw(error);
       }
     })
-    .then((response) => response.json())
-    .then(body => {
-      let updatedReviews = body
-      setReviews([
-        ...reviews,
-        updatedReviews
-      ])
+    .then((response) => {
+      return response.json()
+    })
+    .then((persistedData) => {
+      setReviews(persistedData.reviews)
     })
     .catch((error) => { console.error("error in fetch")
   })
