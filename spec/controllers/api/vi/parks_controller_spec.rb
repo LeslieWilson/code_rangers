@@ -47,6 +47,8 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
   describe "POST#create" do
     it "should should sucessfully post when all fields are filled in" do
+      user = FactoryBot.create(:user)
+      sign_in user
       park3 = { park: {
         name: 'Example Park',
         location: 'Boston',
@@ -68,6 +70,8 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     end
 
     it "should should return errors when filled out incorrectly" do
+      user = FactoryBot.create(:user)
+      sign_in user
       park4 = { park: {
         name: "",
         location: "",
@@ -86,6 +90,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["name"]).to eq park4["can't be blank"]
       expect(returned_json["location"]).to eq park4["can't be blank"]
       expect(returned_json["description"]).to eq park4["can't be blank"]
+      expect()
     end
   end
 end
