@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import humps from 'humps'
 import ParkDetailTile from '../components/ParkDetailTile'
 import ReviewsList from '../components/ReviewsList'
+import ReviewForm from './ReviewForm'
 
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  let parkId = props.match.params.id
 
   useEffect(() => {
-    let parkId = props.match.params.id
     fetch(`/api/v1/parks/${parkId}`)
     .then((response) => {
       if (response.ok) {
@@ -28,6 +30,34 @@ const ParkShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
+  const addNewReview = (payload) => {
+    fetch(`/api/v1/parks/${parkId}/reviews`, {
+      method: "POST",
+      body: JSON.stringify(humps.decamelizeKeys(payload)),
+      headers:{
+        Accept: "application/json",
+        "Content-type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.ok) {
+        return response;
+      } else {
+        const errorMessage = `${response.status} (${response.statusText})`
+        const error = new Error(errorMessage)
+        throw(error);
+      }
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((persistedData) => {
+      setReviews(persistedData.reviews)
+    })
+    .catch((error) => { console.error("error in fetch")
+  })
+}
+
   return (
     <div>
       <ParkDetailTile
@@ -38,6 +68,10 @@ const ParkShowContainer = (props) => {
       />
       <ReviewsList
         reviews={reviews}
+      />
+      <ReviewForm
+        parkId={props.match.params.id}
+        addNewReview={addNewReview}
       />
     </div>
   )
