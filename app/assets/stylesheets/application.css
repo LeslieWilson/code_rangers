@@ -15,3 +15,33 @@
  *= require foundation_and_overrides
 
  */
+
+body {
+  background-color: #444B6E
+}
+
+.title {
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.round {
+  background-color: #F8F991;
+  border-radius:30%;
+
+ }
+
+.top-bar {
+  background-color: #9AB87A;
+}
+
+.title a:link {
+  color: white;
+}
+
+.title a:visited {
+  color: white;
+}
+
+.title a:hover {
+  color: white;
+}
