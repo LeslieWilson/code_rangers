@@ -1,5 +1,5 @@
 class Api::V1::ParksController < ApiController
-  
+  before_action :authenticate_user!, except: [:show, :index]
   def index
     render json: Park.all
   end
@@ -18,7 +18,7 @@ class Api::V1::ParksController < ApiController
 
   def create
     park = Park.new(park_params)
-
+    park.user_id = current_user.id
     if park.save
       render json: {}
     else

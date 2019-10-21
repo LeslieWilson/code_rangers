@@ -90,6 +90,7 @@ const ParkForm = (props) => {
       return response.json()
     })
     .then((persistedData)=>{
+      debugger
       setShouldRedirect(true)
     })
     .catch((error) => {console.error("error in fetch")
