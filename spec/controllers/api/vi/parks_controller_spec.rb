@@ -11,7 +11,6 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     FactoryBot.create(:review, park: park1)
   }
 
-
   describe "GET#index" do
     it "should return a list of the parks" do
       get :index
