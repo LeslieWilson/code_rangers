@@ -4,7 +4,6 @@ import ParkDetailTile from '../components/ParkDetailTile'
 import ReviewsList from '../components/ReviewsList'
 import ReviewForm from './ReviewForm'
 
-
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])

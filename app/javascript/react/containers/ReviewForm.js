@@ -47,7 +47,7 @@ const ReviewForm = (props) => {
   const handleReviewSubmit = (event) => {
     event.preventDefault()
     if (!validForSubmission()){
-      return(<p>nope</p>)
+      return
     }
 
     let payload = {
@@ -60,30 +60,28 @@ const ReviewForm = (props) => {
     clearFields()
   }
 
-return(
-  <form onSubmit={handleReviewSubmit}>
-  <ErrorList errors={submitErrors} />
-    <label>
-    Rating
-      <input
-        name="rating"
-        type="text"
-        onChange={handleFieldChange}
-        value={newReview.rating}
-      />
-    </label>
-
-    <label>
-    Review
-      <input
-        name="reviewBody"
-        type="text"
-        onChange={handleFieldChange}
-        value={newReview.reviewBody}
-      />
-    </label>
-
-    <input className = "button" type = "submit" value = "Submit" />
+  return(
+    <form onSubmit={handleReviewSubmit}>
+      <ErrorList errors={submitErrors}/>
+      <label>
+        Rating
+          <input
+            name="rating"
+            type="text"
+            onChange={handleFieldChange}
+            value={newReview.rating}
+          />
+      </label>
+      <label>
+        Review
+          <input
+            name="reviewBody"
+            type="text"
+            onChange={handleFieldChange}
+            value={newReview.reviewBody}
+          />
+      </label>
+      <input className = "button" type = "submit" value = "Submit" />
     </form>
   )
 }

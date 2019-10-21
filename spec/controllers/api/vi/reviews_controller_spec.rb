@@ -13,7 +13,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
         park_id: park5.id
       }}
 
-      post :create, :params => {park_id: park5.id, review: review2}, format: :json
+      post :create, params: {park_id: park5.id, review: review2}, format: :json
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
