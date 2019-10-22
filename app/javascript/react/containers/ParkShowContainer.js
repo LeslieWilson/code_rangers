@@ -66,12 +66,12 @@ const ParkShowContainer = (props) => {
         description={park.description}
         image={park.image}
       />
-      <ReviewsList
-        reviews={reviews}
-      />
       <ReviewForm
         parkId={props.match.params.id}
         addNewReview={addNewReview}
+      />
+      <ReviewsList
+        reviews={reviews}
       />
     </div>
   )

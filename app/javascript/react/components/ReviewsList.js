@@ -13,8 +13,8 @@ const ReviewsList = (props) => {
   })
 
   return(
-    <div>
-      <h4>Reviews:</h4>
+    <div id="review-list" className="callout">
+      <h4 className="reviews-header">Reviews</h4>
       <ul>
         {reviewTiles}
       </ul>
