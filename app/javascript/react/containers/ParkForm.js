@@ -90,7 +90,6 @@ const ParkForm = (props) => {
       return response.json()
     })
     .then((persistedData)=>{
-      debugger
       setShouldRedirect(true)
     })
     .catch((error) => {console.error("error in fetch")
@@ -102,8 +101,10 @@ const ParkForm = (props) => {
   }
 
   return(
-    <form onSubmit={handleParkSubmit} className="new-parkform callout">
-      <ErrorList errors={errors} />
+    <form onSubmit={handleParkSubmit} className="callout">
+      <ErrorList 
+        errors={errors}
+        />
       <label>
         Park Name
         <input

@@ -7,7 +7,6 @@ import ReviewForm from './ReviewForm'
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
-  const [shouldRedirect, setShouldRedirect] = useState(false)
   let parkId = props.match.params.id
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const ParkShowContainer = (props) => {
       return response.json()
     })
     .then((persistedData) => {
-      setReviews(persistedData.reviews)
+      setReviews(humps.camelizeKeys(persistedData.reviews))
     })
     .catch((error) => { console.error("error in fetch")
   })

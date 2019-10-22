@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
 
-
 const ReviewForm = (props) => {
-  const [submitErrors, setSubmitErrors] = useState({})
+  const [errors, setErrors] = useState({})
   const [newReview, setNewReview] = useState({
     rating:"",
     reviewBody:""
@@ -30,17 +29,17 @@ const ReviewForm = (props) => {
   }
 
   const validForSubmission = () => {
-    let errors = {}
+    let submitErrors = {}
     const requiredFields = ["rating", "reviewBody"]
     requiredFields.forEach(field => {
       if (newReview[field].trim() === "") {
-        errors = {
+        submitErrors = {
           ...submitErrors,
           [field]: "is blank"
         }
       }
     })
-    setSubmitErrors(errors)
+    setErrors(submitErrors)
     return _.isEmpty(submitErrors)
   }
 
@@ -61,8 +60,10 @@ const ReviewForm = (props) => {
   }
 
   return(
-    <form onSubmit={handleReviewSubmit}>
-      <ErrorList errors={submitErrors}/>
+    <form onSubmit={handleReviewSubmit} className="callout">
+      <ErrorList 
+        errors={errors} 
+        />
       <label>
         Rating
           <input

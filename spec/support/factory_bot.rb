@@ -20,5 +20,6 @@ FactoryBot.define do
   factory :review do
     rating { Faker::Number.within(range: 1..5) }
     review_body { Faker::Lorem.paragraph(sentence_count: 4) }
+    park_id { Park.first }
   end
 end

@@ -1,14 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ParksController, type: :controller do
+
+  let!(:user100) {
+    FactoryBot.create(:user)
+  }
   let!(:park1) {
-    FactoryBot.create(:park)
+    FactoryBot.create(:park, user: user100)
   }
   let!(:park2) {
-    FactoryBot.create(:park)
+    FactoryBot.create(:park, user: user100)
   }
   let!(:review1) {
-    FactoryBot.create(:review, park: park1)
+    FactoryBot.create(:review, park: park1, user: user100)
   }
 
   describe "GET#index" do
@@ -27,7 +31,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
   describe "GET#show" do
     it "should return a parks name, location, description, and its reviews" do
-
+      sign_in user100
       get :show, params: {id: park1.id}
       returned_json = JSON.parse(response.body)
 
@@ -46,8 +50,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
   describe "POST#create" do
     it "should should sucessfully post when all fields are filled in" do
-      user = FactoryBot.create(:user)
-      sign_in user
+      sign_in user100
       park3 = { park: {
         name: 'Example Park',
         location: 'Boston',
@@ -69,8 +72,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     end
 
     it "should should return errors when filled out incorrectly" do
-      user = FactoryBot.create(:user)
-      sign_in user
+      sign_in user100
       park4 = { park: {
         name: "",
         location: "",
@@ -89,7 +91,6 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["name"]).to eq park4["can't be blank"]
       expect(returned_json["location"]).to eq park4["can't be blank"]
       expect(returned_json["description"]).to eq park4["can't be blank"]
-      expect(returned_json["user"]).to eq("You must be signed in to add a new park!")
     end
   end
 end
