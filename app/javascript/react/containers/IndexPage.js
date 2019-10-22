@@ -23,12 +23,36 @@ const IndexPage = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const deletePark = (this_park) => {
+    fetch(`api/v1/parks/${this_park}.json`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let parkBody = body.parks
+      setParks(parkBody)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const parkTiles = parks.map(park => {
     return(
       <ParkTile
         key={park.id}
         name={park.name}
         id={park.id}
+        deletePark={deletePark}
       />
     )
   })

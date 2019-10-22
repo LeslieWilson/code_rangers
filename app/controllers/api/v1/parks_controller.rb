@@ -26,6 +26,14 @@ class Api::V1::ParksController < ApiController
     end
   end
 
+  def destroy
+    this_id = params[:id]
+    park_to_delete = Park.find_by(id: this_id)
+    park_to_delete.destroy
+
+    render json: Park.all
+  end
+
   private
 
   def park_params
