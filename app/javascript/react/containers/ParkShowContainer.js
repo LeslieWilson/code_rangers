@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from "react-router-dom"
 import humps from 'humps'
 import ParkDetailTile from '../components/ParkDetailTile'
 import ReviewsList from '../components/ReviewsList'
@@ -29,6 +30,36 @@ const ParkShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])
 
+  const deletePark = (parkId) => {
+    fetch(`/api/v1/parks/${parkId}.json`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      setShouldRedirect(true)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  if (shouldRedirect){
+    return <Redirect to="/parks" />
+  }
+
+  const handleDeleteClick = () => {
+    deletePark(park.id)
+  }
+
   const addNewReview = (payload) => {
     fetch(`/api/v1/parks/${parkId}/reviews`, {
       method: "POST",
@@ -54,23 +85,49 @@ const ParkShowContainer = (props) => {
       setReviews(humps.camelizeKeys(persistedData.reviews))
     })
     .catch((error) => { console.error("error in fetch")
-  })
-}
+    })
+  }
+
+  const deleteReview = (reviewId) => {
+    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let reviewBody = body.reviews
+      setReviews(reviewBody)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
 
   return (
     <div>
+     <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
       <ParkDetailTile
         name={park.name}
         location={park.location}
         description={park.description}
         image={park.image}
       />
-      <ReviewsList
-        reviews={reviews}
-      />
       <ReviewForm
         parkId={props.match.params.id}
         addNewReview={addNewReview}
+      />
+      <ReviewsList
+        reviews={reviews}
+        parkId ={parkId}
+        deleteReview={deleteReview}
       />
     </div>
   )

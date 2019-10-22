@@ -60,30 +60,32 @@ const ReviewForm = (props) => {
   }
 
   return(
-    <form onSubmit={handleReviewSubmit} className="callout">
-      <ErrorList 
-        errors={errors} 
-        />
-      <label>
-        Rating
-          <input
-            name="rating"
-            type="text"
-            onChange={handleFieldChange}
-            value={newReview.rating}
-          />
-      </label>
-      <label>
-        Review
-          <input
-            name="reviewBody"
-            type="text"
-            onChange={handleFieldChange}
-            value={newReview.reviewBody}
-          />
-      </label>
-      <input className = "button" type = "submit" value = "Submit" />
-    </form>
+    <div className="review-form">
+      <h2 id="review-form-title">Submit a Review</h2>
+      <p id="review-form-reminder">Help out your fellow nature-enthusiasts by letting them know what you think of the park. Be honest and mindful that hikers and campers may decide to visit this park based on your recommendation.</p>
+      <form onSubmit={handleReviewSubmit} className="callout">
+        <ErrorList errors={submitErrors}/>
+        <label>
+          Rating
+            <input
+              name="rating"
+              type="text"
+              onChange={handleFieldChange}
+              value={newReview.rating}
+            />
+        </label>
+        <label>
+          Review
+            <input
+              name="reviewBody"
+              type="text"
+              onChange={handleFieldChange}
+              value={newReview.reviewBody}
+            />
+        </label>
+        <input className = "button" type = "submit" value = "Submit" />
+      </form>
+    </div>
   )
 }
 

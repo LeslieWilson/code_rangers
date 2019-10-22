@@ -14,6 +14,17 @@ class Api::V1::ReviewsController < ApiController
     end
   end
 
+  def destroy
+    review_to_delete = Review.find(params[:id])
+    review_to_delete.destroy
+    park = Park.find(params[:park_id])
+
+    render json: {
+      park: park,
+      reviews: park.reviews
+    }
+  end
+
   private
 
   def review_params

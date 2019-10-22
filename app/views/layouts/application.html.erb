@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CodeRangers</title>
+  <title>NPReviews</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Fredericka+the+Great|Liu+Jian+Mao+Cao|Monoton|Sigmar+One&display=swap" rel="stylesheet">
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">CodeRangers</a></h1>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <div class="top-bar-container" data-sticky-container>
+    <nav class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop:0" role="navigation">
+      <div class="top-bar">
+
+        <h1 class='top-bar title'>
+          <%= link_to 'NATIONAL PARKS REVIEW', parks_path %>
+        </h1>
+
+        <section class="top-bar-section header">
+          <ul class="menu">
+            <li class="header-link">
+              <%= link_to 'View All Parks', parks_path %>
+            </li>
+            <%- if current_user -%>
+              <li class="header-link">
+                <%= link_to 'Add a Park!', parks_new_path %>
+              </li>
+              <li class="bar-button"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <%- else -%>
+              <li class="bar-button"><%= button_to 'Log In', new_user_session_path, method: :create %></li>
+              <li class="bar-button"><%= button_to 'Sign Up', new_user_registration_path, method: :get %></li>
+            <%- end -%>
+          </ul>
+        </section>
+      </nav>
+    </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -29,17 +42,19 @@
     </div>
   <%- end -%>
 
-  <%= yield %>
+  <div class="main">
+    <%= yield %>
+  </div>
 
   <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
+
+  <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
       window.railsEnv = '<%= Rails.env %>'
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
-  
+
   <%= yield :extra_footer %>
 </body>
 </html>
