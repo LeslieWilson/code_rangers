@@ -6,8 +6,11 @@ const ReviewsList = (props) => {
     return(
       <ReviewTile
         key={review.id}
+        reviewId={review.id}
         rating={review.rating}
         reviewBody={review.reviewBody}
+        parkId={props.parkId}
+        deleteReview={props.deleteReview}
       />
     )
   })

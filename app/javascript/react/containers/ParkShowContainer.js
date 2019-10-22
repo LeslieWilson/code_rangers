@@ -86,8 +86,31 @@ const ParkShowContainer = (props) => {
       setReviews(persistedData.reviews)
     })
     .catch((error) => { console.error("error in fetch")
-  })
-}
+    })
+  }
+
+  const deleteReview = (reviewId) => {
+    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let reviewBody = body.reviews
+      setReviews(reviewBody)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
 
   return (
     <div>
@@ -104,6 +127,8 @@ const ParkShowContainer = (props) => {
       />
       <ReviewsList
         reviews={reviews}
+        parkId ={parkId}
+        deleteReview={deleteReview}
       />
     </div>
   )
