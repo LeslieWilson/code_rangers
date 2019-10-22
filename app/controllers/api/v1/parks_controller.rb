@@ -13,9 +13,6 @@ class Api::V1::ParksController < ApiController
     }
   end
 
-  def new
-  end
-
   def create
     if user_signed_in?
       park = Park.new(park_params)

@@ -64,7 +64,7 @@ const ReviewForm = (props) => {
       <h2 id="review-form-title">Submit a Review</h2>
       <p id="review-form-reminder">Help out your fellow nature-enthusiasts by letting them know what you think of the park. Be honest and mindful that hikers and campers may decide to visit this park based on your recommendation.</p>
       <form onSubmit={handleReviewSubmit} className="callout">
-        <ErrorList errors={submitErrors}/>
+        <ErrorList errors={errors}/>
         <label>
           Rating
             <input

@@ -8,6 +8,7 @@ import ReviewForm from './ReviewForm'
 const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   let parkId = props.match.params.id
 
   useEffect(() => {
@@ -113,7 +114,7 @@ const ParkShowContainer = (props) => {
 
   return (
     <div>
-     <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
+    <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
       <ParkDetailTile
         name={park.name}
         location={park.location}
