@@ -6,15 +6,18 @@ const ReviewsList = (props) => {
     return(
       <ReviewTile
         key={review.id}
+        reviewId={review.id}
         rating={review.rating}
         reviewBody={review.reviewBody}
+        parkId={props.parkId}
+        deleteReview={props.deleteReview}
       />
     )
   })
 
   return(
-    <div>
-      <h4>Reviews:</h4>
+    <div id="review-list" className="callout">
+      <h4 className="reviews-header">Reviews</h4>
       <ul>
         {reviewTiles}
       </ul>

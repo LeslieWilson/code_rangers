@@ -4,5 +4,5 @@ class Park < ApplicationRecord
   validates :description, presence: true
   validates :image, presence: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end

@@ -1,0 +1,62 @@
+.primary-details {
+  text-align: center;
+  color: white;
+  padding-bottom: 80px
+}
+
+.show-title{
+  padding-top: 60px;
+  font-size: 60px;
+}
+
+.show-description{
+  padding: 30px 0px;
+}
+
+.review-form {
+  float: right;
+  width: 50%
+}
+
+.show-image {
+  float: left;
+  width: 50%
+}
+
+#review-list {
+  margin-top: 19em;
+  width:80%;
+  margin-left:10em;
+}
+
+.reviews-header{
+  text-align: center;
+  font-size: 40px;
+  padding: 30px
+}
+
+#review-form-title {
+  text-align: center;
+  color: white;
+  padding-bottom: 20px
+}
+
+#review-form-reminder {
+  color: white;
+  padding-bottom: 20px
+}
+
+label {
+  color: white;
+  font-size: 16px
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, .1), rgba(255, 255, 255, 1), rgba(0, 0, 0, .1));
+}
+
+#review-list {
+  margin-top: 600px
+}
