@@ -6,7 +6,7 @@ const IndexPage = (props) => {
   const[parks, setParks] = useState([])
 
   useEffect(()=> {
-    fetch("/api/v1/parks.json")
+    fetch("/api/v1/parks")
     .then((response)=> {
       if (response.ok) {
         return response
@@ -23,8 +23,8 @@ const IndexPage = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  const deletePark = (this_park) => {
-    fetch(`api/v1/parks/${this_park}.json`, {
+  const deletePark = (thisPark) => {
+    fetch(`api/v1/parks/${thisPark}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
