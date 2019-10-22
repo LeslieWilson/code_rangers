@@ -1,5 +1,5 @@
 class Api::V1::ParksController < ApiController
-  # before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
   def index
     render json: Park.all
   end
@@ -26,7 +26,7 @@ class Api::V1::ParksController < ApiController
         render json: {status: "error"}
       end
     else
-      flash.now[:notice] = "You must be logged in to add a new park!"
+      render json: {user: "You must be signed in to add a new park!"}
     end
   end
 

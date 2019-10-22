@@ -90,7 +90,7 @@ const ParkForm = (props) => {
       return response.json()
     })
     .then((persistedData)=>{
-      setShouldRedirect(true)
+        setShouldRedirect(true)
     })
     .catch((error) => {console.error("error in fetch")
     })
@@ -99,6 +99,7 @@ const ParkForm = (props) => {
   if (shouldRedirect){
     return <Redirect to="/parks" />
   }
+
 
   return(
     <form onSubmit={handleParkSubmit} className="callout">
