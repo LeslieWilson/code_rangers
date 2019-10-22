@@ -39,7 +39,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       returned_json = JSON.parse(response.body)
       expect(response.status).to eq 401
       expect(response.content_type).to eq("application/json")
-
+      
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["rating"]).to eq review2[:rating]
