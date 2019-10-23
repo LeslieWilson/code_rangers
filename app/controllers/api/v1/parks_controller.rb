@@ -14,16 +14,12 @@ class Api::V1::ParksController < ApiController
   end
 
   def create
-    if user_signed_in?
-      park = Park.new(park_params)
-      park.user_id = current_user.id
-      if park.save
-        render json: {}
-      else
-        render json: {status: "error"}
-      end
+    park = Park.new(park_params)
+    park.user_id = current_user.id
+    if park.save
+      render json: {}
     else
-      render json: {user: "You must be signed in to add a new park!"}
+      render json: {status: "error"}
     end
   end
 
