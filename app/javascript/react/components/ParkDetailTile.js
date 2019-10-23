@@ -12,7 +12,7 @@ const ParkDetailTile = (props) => {
 
   return (
     <div>
-      <button className={`${visibility} delete-button`} onClick={handleDeleteClick}>Delete</button>
+      <button className={`${visibility} delete-button`} onClick={handleDeleteClick}>DELETE</button>
       <div className="primary-details">
         <h1 className="show-title">{props.name}</h1>
         <h4 className="show-location">Location: {props.location}</h4>

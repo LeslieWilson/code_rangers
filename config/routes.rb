@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
 
-<<<<<<< HEAD
-=======
-  resources :parks, only: [:new]
-
->>>>>>> ed9528cca4c005ebffeb0698c1608da7c95ca395
   get '/parks/new', to: "static_pages#index"
   resources :parks, only: [:new]
   get '/parks', to: "static_pages#index"
