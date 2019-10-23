@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
+import humps from 'humps'
 import ParkTile from "../components/ParkTile"
 import ParkForm from "./ParkForm"
 
 const IndexPage = (props) => {
   const[parks, setParks] = useState([])
+  const[currentUserId, setCurrentUserId] = useState(null)
 
   useEffect(()=> {
     fetch("/api/v1/parks")
@@ -18,7 +20,8 @@ const IndexPage = (props) => {
     })
     .then(response => response.json())
     .then(parkBody => {
-      setParks(parkBody.parks)
+      setParks(humps.camelizeKeys(parkBody.parks))
+      setCurrentUserId(parkBody.scope[0].id)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -39,9 +42,9 @@ const IndexPage = (props) => {
       }
     })
     .then(response => response.json())
-    .then(body => {
-      let parkBody = body.parks
-      setParks(parkBody)
+    .then(parkBody => {
+      setParks(humps.camelizeKeys(parkBody.parks))
+      setCurrentUserId(parkBody.scope[0].id)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -53,6 +56,8 @@ const IndexPage = (props) => {
         name={park.name}
         id={park.id}
         deletePark={deletePark}
+        parkUserId={park.userId}
+        currentUserId={currentUserId}
       />
     )
   })

@@ -1,7 +1,10 @@
 class Api::V1::ParksController < ApiController
   before_action :authenticate_user!, except: [:show, :index]
   def index
-    render json: Park.all
+    render json: {
+      parks: Park.all,
+      scope: [current_user, user_signed_in?]
+    }
   end
 
   def show
@@ -9,6 +12,7 @@ class Api::V1::ParksController < ApiController
 
     render json: {
       park: park,
+      scope: [current_user, user_signed_in?],
       reviews: park.reviews
     }
   end
@@ -31,7 +35,10 @@ class Api::V1::ParksController < ApiController
     park_to_delete = Park.find(params[:id])
     park_to_delete.destroy
 
-    render json: Park.all
+    render json: {
+      parks: Park.all,
+      scope: [current_user, user_signed_in?]
+    }
   end
 
   private

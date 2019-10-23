@@ -9,6 +9,7 @@ const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
   let parkId = props.match.params.id
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const ParkShowContainer = (props) => {
     .then(response => response.json())
     .then(body => {
       let thisPark = humps.camelizeKeys(body)
+      setCurrentUser(thisPark.scope[0].id)
       setPark(thisPark.park)
       setReviews(thisPark.reviews)
     })
@@ -55,10 +57,6 @@ const ParkShowContainer = (props) => {
 
   if (shouldRedirect){
     return <Redirect to="/parks" />
-  }
-
-  const handleDeleteClick = () => {
-    deletePark(park.id)
   }
 
   const addNewReview = (payload) => {
@@ -114,12 +112,15 @@ const ParkShowContainer = (props) => {
 
   return (
     <div>
-    <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
       <ParkDetailTile
+        parkId={parkId}
+        parkUserId={park.userId}
         name={park.name}
         location={park.location}
         description={park.description}
         image={park.image}
+        deletePark={deletePark}
+        currentUserId={currentUser}
       />
       <ReviewForm
         parkId={props.match.params.id}
