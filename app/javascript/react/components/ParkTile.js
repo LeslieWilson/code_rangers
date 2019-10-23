@@ -16,7 +16,11 @@ const ParkTile = (props) => {
       <Link to={`/parks/${props.id}`}>
         <li>{props.name}</li>
       </Link>
+      <img className="index-image" src={props.image}></img>
       <button className={`${visibility} delete-button`} onClick={handleClick}>Delete</button>
+
+      <a href={`/parks/${props.id}/edit`}>edit park</a>
+
     </div>
   )
 }

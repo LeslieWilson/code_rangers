@@ -19,7 +19,7 @@ const ParkDetailTile = (props) => {
         <p className="show-description">{props.description}</p>
         <hr/>
       </div>
-      <div className="show-image">{props.image}</div>
+      <img className="show-image" src={props.image}></img>
     </div>
   )
 }
