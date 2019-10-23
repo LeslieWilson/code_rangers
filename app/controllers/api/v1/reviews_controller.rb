@@ -21,7 +21,8 @@ class Api::V1::ReviewsController < ApiController
 
     render json: {
       park: park,
-      reviews: park.reviews
+      reviews: park.reviews,
+      scope: [current_user, user_signed_in?]
     }
   end
 
