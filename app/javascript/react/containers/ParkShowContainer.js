@@ -83,7 +83,7 @@ const ParkShowContainer = (props) => {
       return response.json()
     })
     .then((persistedData) => {
-      setReviews(persistedData.reviews)
+      setReviews(humps.camelizeKeys(persistedData.reviews))
     })
     .catch((error) => { console.error("error in fetch")
     })
@@ -114,7 +114,7 @@ const ParkShowContainer = (props) => {
 
   return (
     <div>
-     <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
+    <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
       <ParkDetailTile
         name={park.name}
         location={park.location}

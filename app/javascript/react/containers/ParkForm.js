@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import _ from 'lodash'
 import ErrorList from "./ErrorList"
@@ -90,7 +90,7 @@ const ParkForm = (props) => {
       return response.json()
     })
     .then((persistedData)=>{
-      setShouldRedirect(true)
+        setShouldRedirect(true)
     })
     .catch((error) => {console.error("error in fetch")
     })
@@ -100,9 +100,12 @@ const ParkForm = (props) => {
     return <Redirect to="/parks" />
   }
 
+
   return(
-    <form onSubmit={handleParkSubmit} className="new-parkform callout">
-      <ErrorList errors={errors} />
+    <form onSubmit={handleParkSubmit} className="callout">
+      <ErrorList 
+        errors={errors}
+        />
       <label>
         Park Name
         <input

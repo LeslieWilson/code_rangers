@@ -5,6 +5,7 @@ const ParkTile = (props) => {
   const handleClick = () => {
     props.deletePark(props.id)
   }
+
   return(
     <div className="park-tile">
       <Link to={`/parks/${props.id}`}>
