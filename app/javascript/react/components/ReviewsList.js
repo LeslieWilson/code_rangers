@@ -11,6 +11,8 @@ const ReviewsList = (props) => {
         reviewBody={review.reviewBody}
         parkId={props.parkId}
         deleteReview={props.deleteReview}
+        currentUserId={props.currentUserId}
+        parkUserId={props.parkUserId}
       />
     )
   })

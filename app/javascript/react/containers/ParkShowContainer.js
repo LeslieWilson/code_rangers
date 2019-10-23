@@ -88,7 +88,7 @@ const ParkShowContainer = (props) => {
   }
 
   const deleteReview = (reviewId) => {
-    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}`, {
+    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
@@ -130,6 +130,8 @@ const ParkShowContainer = (props) => {
         reviews={reviews}
         parkId ={parkId}
         deleteReview={deleteReview}
+        currentUserId={currentUser}
+        parkUserId={park.userId}
       />
     </div>
   )
