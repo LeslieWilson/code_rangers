@@ -28,6 +28,7 @@ class Api::V1::ParksController < ApiController
   end
 
   def destroy
+    
     park_to_delete = Park.find(params[:id])
     park_to_delete.destroy
 
