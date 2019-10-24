@@ -15,7 +15,6 @@ class ParksController < ApplicationController
     end
 end
 
-
 private
 
 def park_params
