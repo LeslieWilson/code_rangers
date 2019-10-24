@@ -20,10 +20,10 @@ describe("ReviewTile", () => {
   })
 
   it("should render the reviews rating of the park on the page", () => {
-    expect(wrapper.find('#rating').text()).toBe("Rating: 3/5")
+    expect(wrapper.find('#rating').text()).toBe("Rating:  3/5")
   })
 
   it("should render the review_body of the review park on the page", () => {
-    expect(wrapper.find('#review-body').text()).toBe("It was pretty nice. I've seen better, I've seen worse.")
+    expect(wrapper.find('#review-body').text()).toBe("Review:  It was pretty nice. I've seen better, I've seen worse.")
   })
 })

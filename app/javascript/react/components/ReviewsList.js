@@ -2,7 +2,7 @@ import React from "react"
 import ReviewTile from './ReviewTile'
 
 const ReviewsList = (props) => {
-  const reviewTiles = props.reviews.map(review => {
+  let reviewTiles = props.reviews.map(review => {
     return(
       <ReviewTile
         key={review.id}
@@ -17,12 +17,15 @@ const ReviewsList = (props) => {
     )
   })
 
+  if (props.reviews.length == 0) {
+    reviewTiles = <p id="reviewless-message">Be the first to add a review for this park!</p>
+  }
+
+
   return(
-    <div id="review-list" className="callout">
-      <h4 className="reviews-header">Reviews</h4>
-      <ul>
-        {reviewTiles}
-      </ul>
+    <div id="review-list">
+      <h2 className="reviews-header">Reviews</h2>
+      {reviewTiles}
     </div>
   )
 }

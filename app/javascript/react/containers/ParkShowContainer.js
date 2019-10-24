@@ -111,21 +111,23 @@ const ParkShowContainer = (props) => {
   }
 
   return (
-    <div>
-      <ParkDetailTile
-        parkId={parkId}
-        parkUserId={park.userId}
-        name={park.name}
-        location={park.location}
-        description={park.description}
-        image={park.image}
-        deletePark={deletePark}
-        currentUserId={currentUser}
-      />
-      <ReviewForm
-        parkId={props.match.params.id}
-        addNewReview={addNewReview}
-      />
+    <>
+      <div className="row">
+        <ParkDetailTile
+          name={park.name}
+          location={park.location}
+          description={park.description}
+          image={park.image}
+          parkId={parkId}
+          parkUserId={park.userId}
+          deletePark={deletePark}
+          currentUserId={currentUser}
+        />
+        <ReviewForm
+          parkId={props.match.params.id}
+          addNewReview={addNewReview}
+        />
+      </div>
       <ReviewsList
         reviews={reviews}
         parkId ={parkId}
@@ -133,7 +135,7 @@ const ParkShowContainer = (props) => {
         currentUserId={currentUser}
         parkUserId={park.userId}
       />
-    </div>
+    </>
   )
 }
 

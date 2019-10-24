@@ -1,5 +1,5 @@
 class Api::V1::ParksController < ApiController
-  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     if user_signed_in?
       render json: {

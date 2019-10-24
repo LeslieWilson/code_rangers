@@ -102,52 +102,53 @@ const ParkForm = (props) => {
 
 
   return(
-    <form onSubmit={handleParkSubmit} className="callout">
-      <ErrorList 
-        errors={errors}
-        />
-      <label>
-        Park Name
-        <input
-          name="name"
-          type="text"
-          onChange={handleFieldChange}
-          value={newPark.name}
-        />
-      </label>
+    <div className="form" id="park-review-form">
+      <h2 id="review-form-title">Submit a Park</h2>
+      <form onSubmit={handleParkSubmit} className="new-parkform">
+        <ErrorList errors={errors} />
+        <label>
+          Park Name
+          <input
+            name="name"
+            type="text"
+            onChange={handleFieldChange}
+            value={newPark.name}
+          />
+        </label>
 
-      <label>
-        Park location
-        <input
-          name="location"
-          type="text"
-          onChange={handleFieldChange}
-          value={newPark.location}
-        />
-      </label>
+        <label>
+          Park location
+          <input
+            name="location"
+            type="text"
+            onChange={handleFieldChange}
+            value={newPark.location}
+          />
+        </label>
 
-      <label>
-        Park Description
-        <input
-          name="description"
-          type="text"
-          onChange={handleFieldChange}
-          value={newPark.description}
-        />
-      </label>
+        <label>
+          Park Description
+          <textarea
+            name="description"
+            rows="3"
+            onChange={handleFieldChange}
+            value={newPark.description}
+          />
+        </label>
 
-      <label>
-        Park Image
-        <input
-          name="image"
-          type="text"
-          onChange={handleFieldChange}
-          value={newPark.image}
-        />
-      </label>
+        <label>
+          Park Image URL
+          <input
+            name="image"
+            type="text"
+            onChange={handleFieldChange}
+            value={newPark.image}
+          />
+        </label>
 
-      <input className="button" type="submit" value="Submit"/>
-    </form>
+        <input className="button submit-it" type="submit" value="Submit"/>
+      </form>
+    </div>
   )
 }
 
