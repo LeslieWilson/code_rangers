@@ -53,6 +53,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   describe "DELETE#destroy" do
     it "should successfully delete a review" do
       sign_in user101
+      prev_count = Review.count
 
       delete :destroy, params: {park_id: park5.id, review: review2, id: review2.id}, format: :json
       returned_json = JSON.parse(response.body)
@@ -63,6 +64,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["rating"]).to eq nil
       expect(returned_json["review_body"]).to eq nil
+      expect(Review.count).to eq(prev_count - 1)
     end
   end
 end

@@ -51,6 +51,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
   describe "DELETE#destroy" do
     it "should sucessfully delete a park" do
       sign_in user100
+      prev_count = Park.count
 
       delete :destroy, :params => {park: park2, id: park2.id}, format: :json
       returned_json = JSON.parse(response.body)
@@ -63,6 +64,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["name"]).to eq nil
       expect(returned_json["location"]).to eq nil
       expect(returned_json["description"]).to eq nil
+      expect(Park.count).to eq(prev_count - 1)
     end
   end
 

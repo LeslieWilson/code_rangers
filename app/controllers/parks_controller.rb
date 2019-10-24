@@ -12,6 +12,9 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
     if @park.update(park_params)
       redirect_to park_path(@park)
+    else
+      flash.now[:message] = @park.errors.full_messages.to_sentence
+      render :'parks/edit'
     end
 end
 

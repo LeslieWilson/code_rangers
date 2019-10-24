@@ -13,7 +13,6 @@ const ParkDetailTile = (props) => {
   return (
     <div>
       <button className={`${visibility} delete-button`} onClick={handleDeleteClick}>Delete</button>
-      <p></p>
       <a className={`${visibility} delete-button`} href={`/parks/${props.parkId}/edit`}>Edit</a>
       <div className="primary-details">
         <h1 className="show-title">{props.name}</h1>

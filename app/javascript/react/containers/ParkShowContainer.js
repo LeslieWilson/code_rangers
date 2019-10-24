@@ -34,7 +34,6 @@ const ParkShowContainer = (props) => {
   },[])
 
   const deletePark = (parkId) => {
-    debugger
     fetch(`/api/v1/parks/${parkId}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
