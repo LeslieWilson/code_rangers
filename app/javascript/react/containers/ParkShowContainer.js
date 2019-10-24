@@ -9,6 +9,7 @@ const ParkShowContainer = (props) => {
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
   let parkId = props.match.params.id
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const ParkShowContainer = (props) => {
     .then(response => response.json())
     .then(body => {
       let thisPark = humps.camelizeKeys(body)
+      setCurrentUser(thisPark.scope[0].id)
       setPark(thisPark.park)
       setReviews(thisPark.reviews)
     })
@@ -57,10 +59,6 @@ const ParkShowContainer = (props) => {
     return <Redirect to="/parks" />
   }
 
-  const handleDeleteClick = () => {
-    deletePark(park.id)
-  }
-
   const addNewReview = (payload) => {
     fetch(`/api/v1/parks/${parkId}/reviews`, {
       method: "POST",
@@ -83,14 +81,14 @@ const ParkShowContainer = (props) => {
       return response.json()
     })
     .then((persistedData) => {
-      setReviews(persistedData.reviews)
+      setReviews(humps.camelizeKeys(persistedData.reviews))
     })
     .catch((error) => { console.error("error in fetch")
     })
   }
 
   const deleteReview = (reviewId) => {
-    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}`, {
+    fetch(`/api/v1/parks/${parkId}/reviews/${reviewId}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
@@ -125,6 +123,10 @@ const ParkShowContainer = (props) => {
           location={park.location}
           description={park.description}
           image={park.image}
+          parkId={parkId}
+          parkUserId={park.userId}
+          deletePark={deletePark}
+          currentUserId={currentUser}
         />
       </div>
         <ReviewForm
@@ -136,6 +138,8 @@ const ParkShowContainer = (props) => {
         reviews={reviews}
         parkId ={parkId}
         deleteReview={deleteReview}
+        currentUserId={currentUser}
+        parkUserId={park.userId}
       />
     </>
   )

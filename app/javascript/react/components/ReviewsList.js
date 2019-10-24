@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import ReviewTile from './ReviewTile'
 
 const ReviewsList = (props) => {
@@ -11,6 +11,8 @@ const ReviewsList = (props) => {
         reviewBody={review.reviewBody}
         parkId={props.parkId}
         deleteReview={props.deleteReview}
+        currentUserId={props.currentUserId}
+        parkUserId={props.parkUserId}
       />
     )
   })

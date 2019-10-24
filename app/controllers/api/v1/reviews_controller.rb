@@ -1,8 +1,9 @@
 class Api::V1::ReviewsController < ApiController
-
+  before_action :authenticate_user!
   def create
     review = Review.new(review_params)
     park = Park.find(params[:park_id])
+    review.user_id = current_user.id
 
     if review.save
       render json: {
@@ -19,10 +20,19 @@ class Api::V1::ReviewsController < ApiController
     review_to_delete.destroy
     park = Park.find(params[:park_id])
 
-    render json: {
-      park: park,
-      reviews: park.reviews
-    }
+    if user_signed_in?
+      render json: {
+        park: park,
+        reviews: park.reviews,
+        scope: [current_user, user_signed_in?]
+      }
+    else
+      render json: {
+        park: park,
+        reviews: park.reviews,
+        scope: [id: 0]
+      }
+    end
   end
 
   private
