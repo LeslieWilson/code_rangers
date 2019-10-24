@@ -24,7 +24,7 @@
             </li>
             <%- if current_user -%>
               <li class="header-link">
-                <%= link_to 'Add a Park!', new_park_path %>
+                <%= link_to 'Add a Park!', '/parks/new' %>
               </li>
               <li class="bar-button"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <%- else -%>

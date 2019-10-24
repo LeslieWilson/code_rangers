@@ -1,16 +1,35 @@
 class Api::V1::ParksController < ApiController
   before_action :authenticate_user!, except: [:show, :index]
   def index
-    render json: Park.all
+    if user_signed_in?
+      render json: {
+        parks: Park.all,
+        scope: [current_user, user_signed_in?]
+      }
+    else
+      render json: {
+        parks: Park.all,
+        scope: [id: 0]
+      }
+    end
   end
 
   def show
     park = Park.find(params[:id])
 
-    render json: {
-      park: park,
-      reviews: park.reviews
-    }
+    if user_signed_in?
+      render json: {
+        park: park,
+        scope: [current_user, user_signed_in?],
+        reviews: park.reviews
+      }
+    else
+      render json: {
+        park: park,
+        reviews: park.reviews,
+        scope: [id: 0]
+      }
+    end
   end
 
   def create
@@ -24,11 +43,13 @@ class Api::V1::ParksController < ApiController
   end
 
   def destroy
-    
     park_to_delete = Park.find(params[:id])
     park_to_delete.destroy
 
-    render json: Park.all
+    render json: {
+      parks: Park.all,
+      scope: [current_user, user_signed_in?]
+    }
   end
 
   private
