@@ -113,24 +113,31 @@ const ParkShowContainer = (props) => {
   }
 
   return (
-    <div>
-     <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
-      <ParkDetailTile
-        name={park.name}
-        location={park.location}
-        description={park.description}
-        image={park.image}
-      />
-      <ReviewForm
-        parkId={props.match.params.id}
-        addNewReview={addNewReview}
-      />
+    <>
+      <div className="row">
+        <div className="columns large-12">
+        <button className="button delete-button" onClick={handleDeleteClick}>DELETE MY PARK</button>
+        </div>
+
+      <div className="columns large-12">
+        <ParkDetailTile
+          name={park.name}
+          location={park.location}
+          description={park.description}
+          image={park.image}
+        />
+      </div>
+        <ReviewForm
+          parkId={props.match.params.id}
+          addNewReview={addNewReview}
+        />
+      </div>
       <ReviewsList
         reviews={reviews}
         parkId ={parkId}
         deleteReview={deleteReview}
       />
-    </div>
+    </>
   )
 }
 

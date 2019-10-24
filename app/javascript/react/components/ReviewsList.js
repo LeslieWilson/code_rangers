@@ -16,11 +16,9 @@ const ReviewsList = (props) => {
   })
 
   return(
-    <div id="review-list" className="callout">
-      <h4 className="reviews-header">Reviews</h4>
-      <ul>
-        {reviewTiles}
-      </ul>
+    <div id="review-list">
+      <h2 className="reviews-header">Reviews</h2>
+      {reviewTiles}
     </div>
   )
 }
