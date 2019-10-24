@@ -6,7 +6,9 @@ import ReviewsList from '../components/ReviewsList'
 import ReviewForm from './ReviewForm'
 
 const ParkShowContainer = (props) => {
-  const [park, setPark] = useState({})
+  const [park, setPark] = useState({
+    image: {url:""}
+  })
   const [reviews, setReviews] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
@@ -34,7 +36,6 @@ const ParkShowContainer = (props) => {
   },[])
 
   const deletePark = (parkId) => {
-    debugger
     fetch(`/api/v1/parks/${parkId}.json`, {
       credentials: 'same-origin',
       method: 'DELETE',
@@ -119,7 +120,7 @@ const ParkShowContainer = (props) => {
         name={park.name}
         location={park.location}
         description={park.description}
-        image={park.image}
+        image={park.image.url}
         deletePark={deletePark}
         currentUserId={currentUser}
       />

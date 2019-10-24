@@ -9,7 +9,6 @@ const ParkDetailTile = (props) => {
   if (props.parkUserId === props.currentUserId) {
     visibility = "visible"
   }
-
   return (
     <div>
       <button className={`${visibility} delete-button`} onClick={handleDeleteClick}>DELETE</button>

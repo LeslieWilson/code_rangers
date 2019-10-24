@@ -4,8 +4,7 @@ class CreateParks < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :location, null: false
       t.text :description, null: false
-      t.string :image, null: false
-      t.string :image, null: false
+      t.string :image
       t.timestamps
     end
   end

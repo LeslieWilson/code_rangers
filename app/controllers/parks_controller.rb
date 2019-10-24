@@ -1,5 +1,6 @@
 class ParksController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_s3_direct_post, only: [:edit, :update]
 
   def new
   end
@@ -12,12 +13,16 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
     if @park.update(park_params)
       redirect_to "/parks"
-    end
+  end
 end
 
 private
 
-def park_params
-  params.require(:park).permit(:name, :location, :description, :image)
-end
+  def park_params
+    params.require(:park).permit(:name, :location, :description, :image)
+  end
+
+  def set_s3_direct_post
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+  end
 end
