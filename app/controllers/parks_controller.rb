@@ -11,13 +11,13 @@ class ParksController < ApplicationController
   def update
     @park = Park.find(params[:id])
     if @park.update(park_params)
-      redirect_to "/parks"
+      redirect_to park_path(@park)
     end
 end
 
-private
+  private
 
-def park_params
-  params.require(:park).permit(:name, :location, :description, :image)
-end
+  def park_params
+    params.require(:park).permit(:name, :location, :description, :image)
+  end
 end
