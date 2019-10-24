@@ -113,11 +113,6 @@ const ParkShowContainer = (props) => {
   return (
     <>
       <div className="row">
-        <div className="columns large-12">
-        <button className="button delete-button" onClick={handleDeleteClick}>DELETE MY PARK</button>
-        </div>
-
-      <div className="columns large-12">
         <ParkDetailTile
           name={park.name}
           location={park.location}
@@ -128,7 +123,6 @@ const ParkShowContainer = (props) => {
           deletePark={deletePark}
           currentUserId={currentUser}
         />
-      </div>
         <ReviewForm
           parkId={props.match.params.id}
           addNewReview={addNewReview}
