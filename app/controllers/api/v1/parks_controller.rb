@@ -16,7 +16,7 @@ class Api::V1::ParksController < ApiController
 
   def show
     park = Park.find(params[:id])
-
+    binding.pry
     if user_signed_in?
       render json: {
         park: park,
@@ -33,6 +33,7 @@ class Api::V1::ParksController < ApiController
   end
 
   def create
+    binding.pry
     park = Park.new(park_params)
     park.user_id = current_user.id
     if park.save
