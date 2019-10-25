@@ -33,7 +33,7 @@ const ParkForm = (props) => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "location", "description", "image"]
+    const requiredFields = ["name", "location", "description"]
     requiredFields.forEach(field => {
       if (newPark[field].trim() === "") {
         submitErrors = {
