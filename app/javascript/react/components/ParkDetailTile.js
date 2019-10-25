@@ -24,7 +24,7 @@ const ParkDetailTile = (props) => {
           <hr/>
         </div>
       </div>
-      <div className="small-12 large-6 columns">
+      <div className="small-12 large-6 columns image-box">
         <img className="show-image" src={props.image}></img>
       </div>
     </>

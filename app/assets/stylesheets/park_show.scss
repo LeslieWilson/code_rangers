@@ -20,8 +20,8 @@
 .show-image {
   max-width:720px;
   max-height:360px;
-  width: auto;
-  height: auto;
+  width: 33em;
+  height: 35em;
   border: 3px solid #F4F0E4;
   margin: auto;
   margin-top: 30px;
@@ -55,6 +55,12 @@
 
 #review-form-reminder {
   padding-bottom: 20px
+}
+
+#reviewless-message {
+  text-align:center;
+  font-weight:bold;
+  margin-top:-2em;
 }
 
 label {
@@ -105,10 +111,18 @@ hr {
   border: 1px solid #444B6E;
 }
 
-input.delete-review-button:hover {
+input.delete-review-button:hover, input.delete-review-button:active {
   background-color: #3D315B;
 }
 
 #edit-it {
   margin-right: 20px;
+}
+
+.image-box {
+  background-color: #F4F0E4;
+  width: 100%;
+  border-radius: 10px;
+  text-align: justify;
+  padding: 2em;
 }

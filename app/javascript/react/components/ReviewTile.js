@@ -9,15 +9,15 @@ const ReviewTile = (props) => {
   }
 
   let visibility = "hidden"
-  if (props.parkUserId === props.currentUserId) {
+  if (props.reviewAuthor === props.currentUserId) {
     visibility = "visible"
   }
 
   return(
     <div>
       <div className="single-review">
-        <p id="rating"><b>Rating:  </b>{props.rating}/5</p>
-        <p id="review-body"><b>Review:  </b>{props.reviewBody}</p>
+        <div id="rating"><b>Rating:  </b>{props.rating}/5</div>
+        <div id="review-body"><b>Review:  </b>{props.reviewBody}</div>
         <button className={`${visibility} button delete-review-button`} onClick={handleDeleteReviewClick}>DELETE MY REVIEW</button>
       </div>
       <hr className="divider"/>

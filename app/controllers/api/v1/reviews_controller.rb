@@ -4,7 +4,7 @@ class Api::V1::ReviewsController < ApiController
     review = Review.new(review_params)
     park = Park.find(params[:park_id])
     review.user_id = current_user.id
-
+    
     if review.save
       render json: {
         park: park,
