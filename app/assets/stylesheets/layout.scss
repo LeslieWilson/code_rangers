@@ -31,7 +31,7 @@ body {
 }
 
 .main {
-  margin: 0px 60px;
+  margin: 0px 20px;
 }
 
 ul.menu {
@@ -42,4 +42,11 @@ ul.menu {
   color: white;
   display: inline-block;
   margin-right: 20px
+}
+
+.flash-message {
+  background-color: #E17775;
+  border: 2px solid #E93D3A;
+  text-align: center;
+  color: white
 }

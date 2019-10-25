@@ -65,9 +65,13 @@ const IndexPage = (props) => {
 
   return(
     <div>
-      <h3>National Parks</h3>
+      <div className="index-top">
+      <h2 id="index-title">National Parks</h2>
       <h5>Select a National Park to view reviews and details about the park.</h5>
-      {parkTiles}
+      </div>
+      <div className="row tile-box text-center">
+        {parkTiles}
+      </div>
     </div>
   )
 }

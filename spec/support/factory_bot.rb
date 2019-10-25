@@ -15,10 +15,15 @@ FactoryBot.define do
     image {
       Faker::Name.first_name
     }
+
+    user
   end
 
   factory :review do
     rating { Faker::Number.within(range: 1..5) }
     review_body { Faker::Lorem.paragraph(sentence_count: 4) }
+
+    park
+    user
   end
 end

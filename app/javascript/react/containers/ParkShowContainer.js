@@ -111,24 +111,28 @@ const ParkShowContainer = (props) => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
-  
+
 
   return (
-    <div>
-      <ParkDetailTile
-        parkId={parkId}
-        parkUserId={park.userId}
-        name={park.name}
-        location={park.location}
-        description={park.description}
-        image={park.image.url}
-        deletePark={deletePark}
-        currentUserId={currentUser}
-      />
-      <ReviewForm
-        parkId={props.match.params.id}
-        addNewReview={addNewReview}
-      />
+    <>
+      <div className="row">
+        <ParkDetailTile
+          name={park.name}
+          location={park.location}
+          description={park.description}
+          image={park.image.url}
+          parkId={parkId}
+          parkUserId={park.userId}
+          deletePark={deletePark}
+          currentUserId={currentUser}
+        />
+      <div className="small-12 large-6 columns">
+        <ReviewForm
+          parkId={props.match.params.id}
+          addNewReview={addNewReview}
+        />
+      </div>
+      </div>
       <ReviewsList
         reviews={reviews}
         parkId ={parkId}
@@ -136,7 +140,7 @@ const ParkShowContainer = (props) => {
         currentUserId={currentUser}
         parkUserId={park.userId}
       />
-    </div>
+    </>
   )
 }
 

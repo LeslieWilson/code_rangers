@@ -6,13 +6,13 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     FactoryBot.create(:user)
   }
   let!(:park1) {
-    FactoryBot.create(:park, user: user100)
+    FactoryBot.create(:park, user_id: user100.id)
   }
   let!(:park2) {
-    FactoryBot.create(:park, user: user100)
+    FactoryBot.create(:park, user_id: user100.id)
   }
   let!(:review1) {
-    FactoryBot.create(:review, park: park1, user: user100)
+    FactoryBot.create(:review, park_id: park1.id, user_id: user100.id)
   }
 
   describe "GET#index" do
@@ -22,7 +22,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 1
+      expect(returned_json.length).to eq 2
 
       expect(returned_json["parks"][0]["name"]).to eq park1.name
       expect(returned_json["parks"][1]["name"]).to eq park2.name
@@ -38,7 +38,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 2
+      expect(returned_json.length).to eq 3
       expect(returned_json["park"]["name"]).to eq park1.name
       expect(returned_json["park"]["location"]).to eq park1.location
       expect(returned_json["park"]["description"]).to eq park1.description
@@ -48,8 +48,28 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     end
   end
 
+  describe "DELETE#destroy" do
+    it "should sucessfully delete a park" do
+      sign_in user100
+      prev_count = Park.count
+
+      delete :destroy, :params => {park: park2, id: park2.id}, format: :json
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+
+      expect(returned_json["name"]).to eq nil
+      expect(returned_json["location"]).to eq nil
+      expect(returned_json["description"]).to eq nil
+      expect(Park.count).to eq(prev_count - 1)
+    end
+  end
+
   describe "POST#create" do
-    it "should should sucessfully post when all fields are filled in" do
+    it "should sucessfully post when all fields are filled in" do
       sign_in user100
       park3 = { park: {
         name: 'Example Park',

@@ -10,16 +10,23 @@ const ParkDetailTile = (props) => {
     visibility = "visible"
   }
   return (
-    <div>
-      <button className={`${visibility} delete-button`} onClick={handleDeleteClick}>DELETE</button>
-      <div className="primary-details">
-        <h1 className="show-title">{props.name}</h1>
-        <h4 className="show-location">Location: {props.location}</h4>
-        <p className="show-description">{props.description}</p>
-        <hr/>
+    <>
+      <div className="columns large-12">
+        <button className={`${visibility} button delete-button`} onClick={handleDeleteClick}>DELETE MY PARK</button>
+        <a className={`${visibility} button delete-button`} id="edit-it" href={`/parks/${props.parkId}/edit`}>EDIT MY PARK</a>
       </div>
-      <img className="show-image" src={props.image}></img>
-    </div>
+      <div className="columns large-12">
+        <div className="primary-details">
+          <h1 className="show-title">{props.name}</h1>
+          <h4 className="show-location">Location: {props.location}</h4>
+          <p className="show-description">{props.description}</p>
+          <hr/>
+        </div>
+      </div>
+      <div className="small-12 large-6 columns">
+        <img className="show-image" src={props.image}></img>
+      </div>
+    </>
   )
 }
 

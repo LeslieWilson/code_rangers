@@ -13,15 +13,11 @@ describe ("ParkTile", () => {
     wrapper = mount(
       <BrowserRouter>
         <ParkTile
-          name="leslie"
+          name="Bryce"
           id="1"
         />
       </BrowserRouter>
     )
-  })
-
-  it("visitor goes to index page sees a list of parks", () => {
-    expect(wrapper.find("li").text()).toBe("leslie")
   })
 
   it("should render a link to /parks", () => {

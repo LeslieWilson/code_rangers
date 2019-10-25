@@ -10,11 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require foundation_and_overrides
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
 
  */
+<<<<<<< HEAD
 
 .sticky-topbar {
     width: 100%;
@@ -31,3 +32,5 @@
     color: white;
     display: none;
 }
+=======
+>>>>>>> f18a18e785e4fa5716dac9b2fbbc54519aa167c2

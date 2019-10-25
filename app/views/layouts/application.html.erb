@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Fredericka+the+Great|Liu+Jian+Mao+Cao|Monoton|Sigmar+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Delius|Lato|Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -36,11 +36,13 @@
       </nav>
     </div>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
+  <div>
+    <%- flash.each do |key, value| -%>
+      <div class="flash-message flash flash-<%= key %>">
+        <%= value %>
+      </div>
+    <%- end -%>
+  </div>
 
   <div class="main">
     <%= yield %>

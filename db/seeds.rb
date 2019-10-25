@@ -24,7 +24,7 @@ Park.create(
   name: "Yellowstone",
   location: "Montana",
   description: "Old Faithful",
-  image: "hello picture",
+  image: "https://images.unsplash.com/photo-1528967310676-14f901f25d02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
   user_id: 1
 )
 
@@ -32,7 +32,7 @@ Park.create(
   name: "Acadia",
   location: "Maine",
   description: "There are a lot of wonderful short hikes with breathtaking views!",
-  image: "a picture",
+  image: "https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
   user_id: 1
 )
 
@@ -40,7 +40,7 @@ Park.create(
   name: "Olympic National Park",
   location: "Washington",
   description: "This park is beautiful and has many microclimates including a rainforests, tide pools, and snow capped mountains.",
-  image: "it's a picture",
+  image: "https://images.unsplash.com/photo-1527489377706-5bf97e608852?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2327&q=80",
   user_id: 2
 )
 
