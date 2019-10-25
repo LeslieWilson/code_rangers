@@ -16,11 +16,12 @@ class ParksController < ApplicationController
       flash.now[:message] = @park.errors.full_messages.to_sentence
       render :'parks/edit'
     end
-end
+  end
 
   private
 
   def park_params
     params.require(:park).permit(:name, :location, :description, :image)
   end
+
 end

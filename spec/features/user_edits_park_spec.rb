@@ -14,4 +14,17 @@ feature 'park form' do
 
     expect(page).to have_current_path(park_path(park))
   end
+
+  scenario 'updates with image upload feature successfully' do
+    user = FactoryBot.create(:user)
+    park = FactoryBot.create(:park, user_id: user.id)
+    login_as user
+    visit edit_park_path(park)
+
+    fill_in 'Location', with: 'Montana'
+    fill_in 'Description', with: 'this is my change'
+    click_button 'Edit Park'
+
+    expect(page).to have_current_path(park_path(park))
+  end
 end

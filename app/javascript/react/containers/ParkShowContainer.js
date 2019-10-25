@@ -6,7 +6,9 @@ import ReviewsList from '../components/ReviewsList'
 import ReviewForm from './ReviewForm'
 
 const ParkShowContainer = (props) => {
-  const [park, setPark] = useState({})
+  const [park, setPark] = useState({
+    image: {url:""}
+  })
   const [reviews, setReviews] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
@@ -110,6 +112,7 @@ const ParkShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+
   return (
     <>
       <div className="row">
@@ -117,7 +120,7 @@ const ParkShowContainer = (props) => {
           name={park.name}
           location={park.location}
           description={park.description}
-          image={park.image}
+          image={park.image.url}
           parkId={parkId}
           parkUserId={park.userId}
           deletePark={deletePark}

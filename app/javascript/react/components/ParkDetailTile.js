@@ -9,7 +9,6 @@ const ParkDetailTile = (props) => {
   if (props.parkUserId === props.currentUserId) {
     visibility = "visible"
   }
-
   return (
     <>
       <div className="columns large-12">
