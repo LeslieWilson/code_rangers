@@ -58,7 +58,7 @@ const IndexPage = (props) => {
         deletePark={deletePark}
         parkUserId={park.userId}
         currentUserId={currentUserId}
-        image={park.image}
+        image={park.image.url}
       />
     )
   })
