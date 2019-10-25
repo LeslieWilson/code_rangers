@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import humps from 'humps'
 import ParkTile from "../components/ParkTile"
-import ParkForm from "./ParkForm"
+
 
 const IndexPage = (props) => {
   const[parks, setParks] = useState([])
