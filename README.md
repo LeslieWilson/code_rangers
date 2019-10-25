@@ -21,8 +21,9 @@ View Our Application on Heroku: http://npreviews.herokuapp.com/
 1.    Rails 5.2.3
 2.    React.js 16.8.0
 3.    Foundation 5
-4.    Serializers
-5.    Factory Bot
-6.    Devise
-7.    Rspec, Capybara, and Enzyme with Jest for testing
-8.    CarrierWave linked to Amazon Web Services S3
+4.    PostgreSQL
+5.    Serializers
+6.    Factory Bot
+7.    Devise
+8.    Rspec, Capybara, and Enzyme with Jest for testing
+9.    CarrierWave linked to Amazon Web Services S3
