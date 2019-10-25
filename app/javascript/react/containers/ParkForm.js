@@ -10,7 +10,8 @@ const ParkForm = (props) => {
     name: "",
     location: "",
     description: "",
-    image: ""
+    image:{url: ""
+    }
   })
 
   const handleFieldChange = event => {
@@ -27,6 +28,7 @@ const ParkForm = (props) => {
       location: "",
       description: "",
       image: ""
+      
     })
     setErrors({})
   }
@@ -57,6 +59,7 @@ const ParkForm = (props) => {
       location:newPark.location,
       description:newPark.description,
       image:newPark.image
+      
     }
 
     addNewPark(payload)
@@ -142,7 +145,7 @@ const ParkForm = (props) => {
             name="image"
             type="text"
             onChange={handleFieldChange}
-            value={newPark.image}
+            value={newPark.image.url}
           />
         </label>
 
