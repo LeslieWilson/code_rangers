@@ -12,7 +12,7 @@ const ParkDetailTile = (props) => {
 
   return (
     <>
-      <div className="columns large-12">    
+      <div className="columns large-12">
         <button className={`${visibility} button delete-button`} onClick={handleDeleteClick}>DELETE MY PARK</button>
         <a className={`${visibility} button delete-button`} id="edit-it" href={`/parks/${props.parkId}/edit`}>EDIT MY PARK</a>
       </div>
@@ -23,6 +23,8 @@ const ParkDetailTile = (props) => {
           <p className="show-description">{props.description}</p>
           <hr/>
         </div>
+      </div>
+      <div className="small-12 large-6 columns">
         <img className="show-image" src={props.image}></img>
       </div>
     </>

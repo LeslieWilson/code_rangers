@@ -2,14 +2,10 @@
   background-color: #F4F0E4;
   color: #444B6E;
   margin: 20px auto;
-  width: 800px;
+  width: 60%;
   border-radius: 10px;
   text-align: justify;
   padding: 2em;
-}
-
-.button {
-  text-align: center;
 }
 
 .button:hover {
@@ -18,6 +14,12 @@
 
 #review-form {
   float: center;
-  margin-right: 4em;
-  width: 40%;
+}
+
+#park-review-form {
+  margin: 8em auto;
+}
+
+.auto-button {
+  font-size: 14px
 }
