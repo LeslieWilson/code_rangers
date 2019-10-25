@@ -55,6 +55,10 @@ class Api::V1::ParksController < ApiController
   private
 
   def park_params
-    params.require(:park).permit(:name, :location, :description, :image)
+    if params[:park][:image] == ""
+      params.require(:park).permit(:name, :location, :description)
+    else
+      params.require(:park).permit(:name, :location, :description, :image)
+    end
   end
 end
