@@ -13,6 +13,7 @@ const ReviewsList = (props) => {
         deleteReview={props.deleteReview}
         currentUserId={props.currentUserId}
         parkUserId={props.parkUserId}
+        reviewAuthor={review.userId}
       />
     )
   })

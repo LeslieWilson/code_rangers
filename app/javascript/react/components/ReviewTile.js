@@ -22,7 +22,7 @@ const ReviewTile = (props) => {
   }
 
   let visibility = "hidden"
-  if (props.parkUserId === props.currentUserId) {
+  if (props.reviewAuthor === props.currentUserId) {
     visibility = "visible"
   }
 
