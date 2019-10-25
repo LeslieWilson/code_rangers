@@ -15,22 +15,3 @@
  *= require_self
 
  */
-<<<<<<< HEAD
-
-.sticky-topbar {
-    width: 100%;
-}
-
-.progress {
-    max-width: 600px;
-    margin: 0.2em 0 0.2em 0;
-}
-
-.progress .bar {
-    height: 1.2em;
-    padding-left: 0.2em;
-    color: white;
-    display: none;
-}
-=======
->>>>>>> f18a18e785e4fa5716dac9b2fbbc54519aa167c2

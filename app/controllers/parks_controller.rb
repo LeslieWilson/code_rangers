@@ -12,11 +12,14 @@ class ParksController < ApplicationController
   def update
     @park = Park.find(params[:id])
     if @park.update(park_params)
-      redirect_to "/parks"
+      redirect_to park_path(@park)
+    else
+      flash.now[:message] = @park.errors.full_messages.to_sentence
+      render :'parks/edit'
+    end
   end
-end
 
-private
+  private
 
   def park_params
     params.require(:park).permit(:name, :location, :description, :image)
