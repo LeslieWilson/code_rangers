@@ -123,10 +123,12 @@ const ParkShowContainer = (props) => {
           deletePark={deletePark}
           currentUserId={currentUser}
         />
+      <div className="small-12 large-6 columns">
         <ReviewForm
           parkId={props.match.params.id}
           addNewReview={addNewReview}
         />
+      </div>
       </div>
       <ReviewsList
         reviews={reviews}
