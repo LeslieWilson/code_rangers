@@ -102,7 +102,7 @@ const ParkForm = (props) => {
 
 
   return(
-    <div className="form" id="park-review-form">
+    <div className="form narrow-form" id="park-review-form">
       <h2 id="review-form-title">Submit a Park</h2>
       <form onSubmit={handleParkSubmit} className="new-parkform">
         <ErrorList errors={errors} />

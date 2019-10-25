@@ -8,16 +8,20 @@
   margin-left: 2em
 }
 
+.narrow-form {
+  width: 60%;
+  border-radius: 10px;
+  text-align: justify;
+  padding: 2em;
+  margin: 8em auto;
+}
+
 .button:hover {
   background-color: #C2B2EC;
 }
 
 #review-form {
   float: center;
-}
-
-#park-review-form {
-  margin: 8em auto;
 }
 
 .auto-button {

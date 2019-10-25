@@ -12,10 +12,10 @@ View Our Application on Heroku: http://npreviews.herokuapp.com/
 ## Features
 1.    Visitors can view a list of U.S. National Parks and select a park on the list for more details.
 2.    Detail page includes a park's location, description and reviews.
-2.    Logged in users can add a park in both the homepage and detail page.
-3.    Logged in users can add a new review to an existing park.
-4.    Logged in users can edit and delete parks they have added.
-5.    Logged in users can delete reviews they have added.
+3.    Logged in users can add a park in both the homepage and detail page.
+4.    Logged in users can add a new review to an existing park.
+5.    Logged in users can edit and delete parks they have added.
+6.    Logged in users can delete reviews they have added.
 
 ## Technologies
 1.    Rails 5.2.3
